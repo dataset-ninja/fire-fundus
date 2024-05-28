@@ -36,6 +36,12 @@ def convert_and_upload_supervisely_project(
 
         image_name = get_file_name(image_path)
 
+        category_value = image_name[0]
+        category = sly.Tag(category_meta, value=category_value)
+        tags.append(category)
+
+        ref_id = image_name.split("_")[1]
+
         im_id_value = image_name.split("_")[0]
         group_tag = sly.Tag(group_tag_meta, value=im_id_value)
         tags.append(group_tag)
@@ -53,13 +59,15 @@ def convert_and_upload_supervisely_project(
         for curr_point_str in content:
             if len(curr_point_str) != 0:
                 points = list(map(float, curr_point_str.split(" ")))
-                point_ref = sly.Point(points[1], points[0])
-                label = sly.Label(point_ref, reference)
-                labels.append(label)
 
-                point_test = sly.Point(points[3], points[2])
-                label = sly.Label(point_test, test)
-                labels.append(label)
+                if ref_id == "1":
+                    point_ref = sly.Point(points[1], points[0])
+                    label = sly.Label(point_ref, reference)
+                    labels.append(label)
+                else:
+                    point_test = sly.Point(points[3], points[2])
+                    label = sly.Label(point_test, test)
+                    labels.append(label)
 
         return sly.Annotation(img_size=(img_height, img_wight), labels=labels, img_tags=tags)
 
@@ -67,13 +75,17 @@ def convert_and_upload_supervisely_project(
     reference = sly.ObjClass("reference point", sly.Point)
     test = sly.ObjClass("test point", sly.Point)
 
+    category_meta = sly.TagMeta(
+        "category", sly.TagValueType.ONEOF_STRING, possible_values=["A", "P", "S"]
+    )
+
     group_tag_meta = sly.TagMeta(group_tag_name, sly.TagValueType.ANY_STRING)
 
     project = api.project.create(workspace_id, project_name, change_name_if_conflict=True)
 
     meta = sly.ProjectMeta(
         obj_classes=[reference, test],
-        tag_metas=[group_tag_meta],
+        tag_metas=[group_tag_meta, category_meta],
     )
     api.project.update_meta(project.id, meta.to_json())
     api.project.images_grouping(id=project.id, enable=True, tag_name=group_tag_name)
@@ -95,5 +107,6 @@ def convert_and_upload_supervisely_project(
         api.annotation.upload_anns(img_ids, anns_batch)
 
         progress.iters_done_report(len(images_names_batch))
+
 
     return project

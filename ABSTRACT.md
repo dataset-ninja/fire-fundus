@@ -16,12 +16,12 @@ The image pairs are categorized into three types based on their characteristics.
 
 Categories S and P may also include pathological cases affecting the retina's structure, but as these images lack anatomical differences, retinopathy remains unchanged within each pair. All three categories can feature eye shape deformations caused by conditions such as myopia or hypermetropia.
 
-| Categories | S | P | A |
-| Image pairs | 71 | 49 | 14 |
-|----------------------|----------|-----------|-----------------|
-| Approximate overlap | > 75% | < 75% | > 75% |
-| Anatomical changes | No | No | Yes |
-| Indicative registration application | Super Resolution | Mosaicing | Longitudinal Study |
+|                                     | Category S       | Category P | Category A         |
+| ----------------------------------- | ---------------- | ---------- | ------------------ |
+| # Image pairs                       | 71               | 49         | 14                 |
+| Approximate overlap                 | > 75%            | < 75%      | > 75%              |
+| Anatomical changes                  | No               | No         | Yes                |
+| Indicative registration application | Super Resolution | Mosaicing  | Longitudinal Study |
 
 <span style="font-size: smaller; font-style: italic;">Characteristics of the FIRE dataset image pair categories.</span>
 

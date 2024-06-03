@@ -43,7 +43,9 @@ GITHUB_URL: str = "https://github.com/dataset-ninja/fire-fundus"
 ##################################
 ### * Optional after uploading ###
 ##################################
-DOWNLOAD_ORIGINAL_URL: Optional[Union[str, dict]] = "https://projects.ics.forth.gr/cvrl/fire/FIRE.7z"
+DOWNLOAD_ORIGINAL_URL: Optional[Union[str, dict]] = (
+    "https://projects.ics.forth.gr/cvrl/fire/FIRE.7z"
+)
 # Optional link for downloading original dataset (e.g. "https://some.com/dataset/download")
 
 CLASS2COLOR: Optional[Dict[str, List[str]] or Literal["predefined"]] = "predefined"
@@ -51,19 +53,39 @@ CLASS2COLOR: Optional[Dict[str, List[str]] or Literal["predefined"]] = "predefin
 
 # If you have more than the one paper, put the most relatable link as the first element of the list
 # Use dict key to specify name for a button
-PAPER: Optional[Union[str, List[str], Dict[str, str]]] = "https://carlos.hernandez.im/papers/2017_07_JMO.pdf"
+PAPER: Optional[Union[str, List[str], Dict[str, str]]] = (
+    "https://carlos.hernandez.im/papers/2017_07_JMO.pdf"
+)
 BLOGPOST: Optional[Union[str, List[str], Dict[str, str]]] = None
 REPOSITORY: Optional[Union[str, List[str], Dict[str, str]]] = None
 
 CITATION_URL: Optional[str] = None
-AUTHORS: Optional[List[str]] = ["Carlos Hernandez Matas", "Xenophon Zabulis", "Areti Triantafyllou", "Panagiota Anyfanti","Stella Douma", "Antonis Argyros"]
+AUTHORS: Optional[List[str]] = [
+    "Carlos Hernandez Matas",
+    "Xenophon Zabulis",
+    "Areti Triantafyllou",
+    "Panagiota Anyfanti",
+    "Stella Douma",
+    "Antonis Argyros",
+]
 AUTHORS_CONTACTS: Optional[List[str]] = ["carlos@ics.forth.gr"]
 
-ORGANIZATION_NAME: Optional[Union[str, List[str]]] = ["Institute of Computer Science, Greece", "University of Crete, Greece", "Aristotle University of Thessaloniki, Greece"]
-ORGANIZATION_URL: Optional[Union[str, List[str]]] = ["https://www.forth.gr/en/home/", "https://en.uoc.gr/", "https://www.auth.gr/en/"]
+ORGANIZATION_NAME: Optional[Union[str, List[str]]] = [
+    "Institute of Computer Science, Greece",
+    "University of Crete, Greece",
+    "Aristotle University of Thessaloniki, Greece",
+]
+ORGANIZATION_URL: Optional[Union[str, List[str]]] = [
+    "https://www.forth.gr/en/home/",
+    "https://en.uoc.gr/",
+    "https://www.auth.gr/en/",
+]
 
 # Set '__PRETEXT__' or '__POSTTEXT__' as a key with string value to add custom text. e.g. SLYTAGSPLIT = {'__POSTTEXT__':'some text}
-SLYTAGSPLIT: Optional[Dict[str, Union[List[str], str]]] = {"categories":["A", "P", "S"], "__POSTTEXT__": "Additionally, every image marked with its ***im_id*** tags"}
+SLYTAGSPLIT: Optional[Dict[str, Union[List[str], str]]] = {
+    "categories": "category",
+    "__POSTTEXT__": "Additionally, every image marked with its ***im_id*** tag",
+}
 TAGS: Optional[
     List[
         Literal[

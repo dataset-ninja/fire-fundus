@@ -13,9 +13,9 @@ from dataset_tools.templates import (
 ##################################
 # * Before uploading to instance #
 ##################################
-PROJECT_NAME: str = "FIRE: Fundus Image Registration Dataset"
+PROJECT_NAME: str = "FIRE"
 PROJECT_NAME_FULL: str = "FIRE: Fundus Image Registration Dataset"
-HIDE_DATASET = True  # set False when 100% sure about repo quality
+HIDE_DATASET = False  # set False when 100% sure about repo quality
 
 ##################################
 # * After uploading to instance ##
@@ -84,7 +84,7 @@ ORGANIZATION_URL: Optional[Union[str, List[str]]] = [
 # Set '__PRETEXT__' or '__POSTTEXT__' as a key with string value to add custom text. e.g. SLYTAGSPLIT = {'__POSTTEXT__':'some text}
 SLYTAGSPLIT: Optional[Dict[str, Union[List[str], str]]] = {
     "categories": "category",
-    "__POSTTEXT__": "Additionally, every image marked with its ***im_id*** tag",
+    "__POSTTEXT__": "Additionally, every image grouped with its ***im_id*** tag",
 }
 TAGS: Optional[
     List[
